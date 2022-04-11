@@ -70,12 +70,6 @@ resource "aws_instance" "node00" {
     volume_type           = "gp2"
     delete_on_termination = "true"
   }
-  # user_data = templatefile("docker_init.sh.tpl", {
-  #   dtrUser     = "${var.DTR["user"]}"
-  #   dtrKey      = "${var.DTR["key"]}"
-  #   dtrRegistry = "${var.DTR["registry"]}"
-  #   }
-  # )
   user_data = data.template_file.docker_init_tpl.rendered
   provisioner "file" {
     source      = var.key_file_path
@@ -88,17 +82,6 @@ resource "aws_instance" "node00" {
       timeout     = "1m"
     }
   }
-  # provisioner "remote-exec" {
-  #   inline = [ "sudo sh ${var.docker_init_script["path"]}" ]
-  # }
-
-
-  # user_data              = <<-EOF
-  #           #!/bin/bash
-  #           sudo apt-get update -y
-  #           sudo apt install docker.io -y
-  #           sudo usermod -G docker ubuntu
-  #           EOF
 
   lifecycle {
     create_before_destroy = true
@@ -107,7 +90,6 @@ resource "aws_instance" "node00" {
   tags = {
     Name = "node00-prod"
   }
-
 }
 
 # resource "aws_instance" "node01" {
@@ -186,17 +168,7 @@ resource "aws_security_group" "production-internal" {
     area  = "production"
   }
 
-  # provisioner "remote-exec" {
-  #   inline = [
-  #     "docker ps",
-  #     "docker login 515275369396.dkr.ecr.eu-central-1.amazonaws.com/nginx",
-  #     "docker pull 515275369396.dkr.ecr.eu-central-1.amazonaws.com/nginx:0.1",
-  #     "docker run -d --name nginx -p 80:80 -p 8080:8080 515275369396.dkr.ecr.eu-central-1.amazonaws.com/nginx:0.1",
-  #   ]
-  # }
-
 }
-
 
 
 output "instance_id" {

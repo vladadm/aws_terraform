@@ -1,0 +1,89 @@
+#wb_element_instance3_countdown_timer {
+    width: 100%;
+    height: 100%;
+  font-family: 'Work Sans',Arial,sans-serif;
+  font-size: 77.777777777778px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+   font-style: normal;
+   font-weight: normal;
+   text-decoration: none;
+  }
+@media all and (max-width: 320px) {
+  #wb_element_instance3_countdown_timer {
+    font-size: px;
+  }
+  #wb_element_instance3_countdown_timer .dlmtr {
+    display: none;
+  }
+}
+#wb_element_instance3_countdown_timer .dlmtr {
+  display: inline-block;
+  position: relative;
+  }
+#wb_element_instance3_countdown_timer .numblock {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  }
+#wb_element_instance3_countdown_timer .numblock .num {
+    position: absolute;
+    display: block;
+  top: 0;
+  left: 50%;
+    transform: translateX(-50%);
+  }
+#wb_element_instance3_countdown_timer .numblock .plchldr {
+  color: transparent !important;
+  opacity: 0;
+   font-style: normal;
+   font-weight: normal;
+   text-decoration: none;
+  }
+#wb_element_instance3_countdown_timer .numblock:after {
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  color: #ffffff;
+  text-transform: capitalize;
+  text-align: center;
+  line-height: 100%;
+  position: absolute;
+    top: -15px;
+    bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+   font-style: normal;
+   font-weight: normal;
+   text-decoration: none;
+}
+#wb_element_instance3_countdown_timer .numblock.days:after {
+  content: "дней";
+  }
+#wb_element_instance3_countdown_timer .numblock.hours:after {
+  content: "часы";
+}
+#wb_element_instance3_countdown_timer .numblock.mins:after {
+  content: "минуты";
+}
+#wb_element_instance3_countdown_timer .numblock.secs:after {
+  content: "секунды";
+}
+#wb_element_instance3_wb_caption {
+    width: 100%;
+    height: 100%;
+  background-color: transparent !important;
+  display: flex;
+    justify-content: center;
+  align-items: center;
+  }
+#wb_element_instance3_wb_caption:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  height: auto;
+}

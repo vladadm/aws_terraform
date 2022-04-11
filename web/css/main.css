@@ -1,0 +1,234 @@
+
+html {
+    position: relative;
+}
+
+/* html, body {
+    /* height: 100%;
+    height: auto;
+    padding: 0;
+} */
+
+/* font-family: 'Work Sans', sans-serif; */
+
+/* .wb_text_element {
+    word-wrap: break-word;
+} */
+
+body {
+    /* font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+.root {
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #FCF8F7; */
+    /* size: auto; */
+    /* background-image: url(/img/john-towner-7rlIPXTR6OI-unsplash.jpg); */
+    background: url(../img/john-towner-7rlIPXTR6OI-unsplash.jpg) center top / cover no-repeat scroll transparent;
+    /* opacity: 1; */
+    background-attachment: scroll;
+    /* background-size: cover; */
+    max-width:100%;
+    max-height:100%;
+    /* background-position: left bottom; */
+    ​​
+    /* background-repeat: repeat-x; */
+    width: 1200px;
+    height: 730px;
+    display: block;
+    position: relative;
+}
+
+.navbar-custom {
+    /* background-color: #b54242; */
+    border-color: #ffffff;
+}
+
+.navbar-brand {
+  color: #ffffff;
+  &:hover, &:focus, &:active {
+      color: #ffffff;
+    }
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #0d3849 !important;
+    border-color: #b2d6ea !important;
+}
+
+.nav-link {
+  border-bottom: 5px solid transparent;
+}
+
+.nav-link:hover {
+  border-bottom: 5px solid red;
+}
+
+ul.navbar-nav a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.navbar-nav:link {
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-nav:hover,
+.navbar-nav:active {
+  border-bottom: 1px solid #ffffff;
+}
+
+/* .navbar-nav:hover,
+.navbar-nav:focus {
+    background-color: transparent;
+    border-bottom: transparent;
+} */
+
+
+.wb-cs-row {
+    box-sizing: border-box;
+    float: none;
+    clear: both;
+    width: 100%;
+}
+
+#wb_cs_row_1 {
+    padding-left: 83.333333333333%;
+    padding-right: 0%;
+}
+
+#wb_cs_row_3 {
+    padding-top: 36px;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+#wb_element_instance0 {
+    z-index: 260;
+    min-height: 24px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+}
+
+.wb_cont_inner_rel {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.wb-stl-pagetitle {
+    font-size: 24px;
+    font-style: normal bold;
+    font: normal bold 24px 'Work Sans',Arial,sans-serif;
+    color: #424242;
+    text-decoration: none;
+    text-align: left;
+    line-height: 36px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-transform: uppercase;
+}
+
+#wb_header {
+    background-color: transparent;
+}
+
+#timer {
+  font-size: 24px;
+  font-style: normal bold;
+  font: normal bold 24px 'Work Sans',Arial,sans-serif;
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+  line-height: 36px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px)
+#wb_cs_row_7 {
+    padding-top: 130px;
+    padding-left: 25.583333333333%;
+    padding-right: 25.666666666667%;
+}
+
+
+
+#wb_element_instance3_countdown_timer {
+    width: 100%;
+    height: 100%;
+    font-family: 'Work Sans',Arial,sans-serif;
+    font-size: 77.777777777778px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.wb_cont_inner_rel {
+    max-width: 1860px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#wb_cs_row_7 {
+    padding-top: 130px;
+    padding-left: 25.583333333333%;
+    padding-right: 25.666666666667%;
+}
+
+/* div {
+background: no-repeat url(/img/john-towner-7rlIPXTR6OI-unsplash.png);
+background-position: 0 0, center;
+} */
+
+
+
+#wb_footer {
+  /* border: solid; */
+  /* border-color: red; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 0px;
+  position: absolute;
+  bottom: 0;
+}
+
+.copyright {
+  position: relative;
+}
+
+.copyright h5 {
+  margin: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    margin-left: 10px;
+}
+
+#resourcess {
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline;
+}
+.wb_sbg {
+  bottom: 0;
+
+}
