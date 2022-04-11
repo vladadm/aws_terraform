@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.20
 
 ARG HTML=/var/www/html/
 
