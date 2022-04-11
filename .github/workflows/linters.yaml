@@ -1,0 +1,17 @@
+name: Dockerfile lint
+
+on:
+ push:
+   tags:
+     - '!refs/tags/*'
+   branches:
+     - '*'
+jobs:
+ linter:
+   runs-on: ubuntu-latest
+   steps:
+     
+    - name: Lint Dockerfile
+      uses: hadolint/hadolint-action@master
+      with:
+        dockerfile: "nginx/Dockerfile"
