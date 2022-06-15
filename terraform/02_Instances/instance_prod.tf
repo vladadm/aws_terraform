@@ -9,9 +9,15 @@
 #---------------------------------------------------
 
 # DataSource
-data "aws_subnet" "prod-subnet" {
+data "aws_subnet" "prod-subnet-a" {
   tags = {
-    Name = "prod-subnet"
+    Name = "prod-subnet-a"
+  }
+}
+
+data "aws_subnet" "prod-subnet-b" {
+  tags = {
+    Name = "prod-subnet-b"
   }
 }
 
@@ -23,12 +29,13 @@ data "aws_vpc" "production" {
 
 data "aws_availability_zones" "working_zone" {}
 
-data "template_file" "docker_init_tpl" {
+data "template_file" "host_init" {
   template = file("docker_init.sh.tpl")
   vars = {
-    dtrUser     = "${var.DTR["user"]}"
-    dtrKey      = "${var.DTR["key"]}"
-    dtrRegistry = "${var.DTR["registry"]}"
+    registry_user    = "${var.docker_registry["user"]}"
+    registry_secret  = "${var.docker_registry["secret"]}"
+    registry_address = "${var.docker_registry["address"]}"
+    docker_image     = "${var.docker_image}"
   }
 }
 
@@ -42,7 +49,7 @@ provider "aws" {
 }
 
 resource "aws_network_interface" "internal" {
-  subnet_id   = data.aws_subnet.prod-subnet.id
+  subnet_id   = data.aws_subnet.prod-subnet-a.id
   private_ips = ["${var.local_net}.100"]
 
   tags = {
@@ -56,8 +63,9 @@ resource "aws_instance" "node00" {
   #vps_security_group_ids = ["sg-042b7328321b4f994"]
   key_name                    = var.ssh_key_name
   vpc_security_group_ids      = [aws_security_group.production-internal.id]
-  subnet_id                   = data.aws_subnet.prod-subnet.id
+  subnet_id                   = data.aws_subnet.prod-subnet-a.id
   associate_public_ip_address = true
+  availability_zone = "eu-central-1a"
   #private_ips = ["${var.local_net}.1"]
 
   # network_interface {
@@ -70,7 +78,7 @@ resource "aws_instance" "node00" {
     volume_type           = "gp2"
     delete_on_termination = "true"
   }
-  user_data = data.template_file.docker_init_tpl.rendered
+  user_data = data.template_file.host_init.rendered
   provisioner "file" {
     source      = var.key_file_path
     destination = var.key_file_path
@@ -89,6 +97,49 @@ resource "aws_instance" "node00" {
 
   tags = {
     Name = "node00-prod"
+  }
+}
+
+resource "aws_instance" "node01" {
+  ami           = var.ec2["ami"]
+  instance_type = var.ec2["type"]
+  #vps_security_group_ids = ["sg-042b7328321b4f994"]
+  key_name                    = var.ssh_key_name
+  vpc_security_group_ids      = [aws_security_group.production-internal.id]
+  subnet_id                   = data.aws_subnet.prod-subnet-b.id
+  associate_public_ip_address = true
+  availability_zone = "eu-central-1b"
+  #private_ips = ["${var.local_net}.1"]
+
+  # network_interface {
+  #   network_interface_id = aws_network_interface.internal.id
+  #   device_index         = 0
+  # }
+
+  root_block_device {
+    volume_size           = "8"
+    volume_type           = "gp2"
+    delete_on_termination = "true"
+  }
+  user_data = data.template_file.host_init.rendered
+  provisioner "file" {
+    source      = var.key_file_path
+    destination = var.key_file_path
+
+    connection {
+      host        = self.public_ip
+      user        = var.username
+      private_key = file("${var.key_file_path}")
+      timeout     = "1m"
+    }
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = {
+    Name = "node01-prod"
   }
 }
 
